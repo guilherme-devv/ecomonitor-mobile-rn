@@ -8,26 +8,26 @@ import axios from "axios";
 
 export default function Level6() {
   const [isChecked, setChecked] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("5585986089669");
-  const [email, setEmail] = useState("gui@gmail.com");
+  const [phoneNumber, setPhoneNumber] = useState("55859286089669");
+  const [email, setEmail] = useState("gui2@gmail.com");
   const [fullName, setFullName] = useState("Guilherme");
   const [dob, setDob] = useState("2020-03-17");
-  const [cpf, setCpf] = useState("60807398365");
+  const [cpf, setCpf] = useState("608072398365");
   const [city, setCity] = useState("fortaleza");
 
   const handleNavigate = () => {
     // Enviar os dados para criar o usuário via API
     axios
-      .post("http://54.221.28.215:8000/api/users", {
-        number_of_phone: "string",
-        email: "asdas@example.com",
-        first_name: "string",
-        last_name: "string",
-        city: "string",
-        cpf: "string",
-        date_of_birth: "2025-04-01",
-        password: "string",
-        type: 1
+      .post("http://54.221.28.215:8000/api/users/", {
+        number_of_phone: phoneNumber,
+        email: email,
+        first_name: fullName.split(' ')[0],
+        last_name: fullName.split(' ')[1],
+        city: city,
+        cpf: cpf,
+        date_of_birth: dob,
+        // password: "string",
+        // type: 1
       }, {
         headers: {
           'accept': 'application/json',
@@ -39,6 +39,7 @@ export default function Level6() {
         router.replace("/screens/SignUp/Level7");
       })
       .catch((error) => {
+
         console.error("Erro ao criar usuário:", error);
       });
   };
